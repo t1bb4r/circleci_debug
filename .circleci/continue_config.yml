@@ -52,6 +52,13 @@ workflows:
     jobs:
       - shared-job:
           name: shared-job-project1
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only:
+                - /^project1-v*/
+
       - production-job:
           name: production-job-project1
           filters:
@@ -77,6 +84,13 @@ workflows:
     jobs:
       - shared-job:
           name: shared-job-project2
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only:
+                - /^project1-v*/
+
       - production-job:
           name: production-job-project2
           filters:
