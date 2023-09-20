@@ -23,13 +23,14 @@ workflows:
               ignore:
                 - /^project1-v*/
                 - /^project2-v*/
-deploy-project1:
-  - continuation/continue:
-      configuration_path: .circleci/continue_config.yml
-      parameters: '{"deploy-project1": true}'
-      filters:
-        branches:
-          ignore: /.*/
-        tags:
-          only:
-            - /^project1-v*/
+  deploy-project1:
+    jobs: 
+      - continuation/continue:
+          configuration_path: .circleci/continue_config.yml
+          parameters: '{"deploy-project1": true}'
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only:
+                - /^project1-v*/
