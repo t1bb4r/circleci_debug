@@ -7,7 +7,7 @@ orbs:
   path-filtering: circleci/path-filtering@1
 
 workflows:
-  always-run:
+  main:
     jobs:
       - path-filtering/filter:
           name: check-updated-files
@@ -23,6 +23,8 @@ workflows:
               ignore:
                 - /^project1-v.*/
                 - /^project2-v.*/
+  deploy:
+    jobs:
       - continuation/continue:
           configuration_path: .circleci/continue_config.yml
           parameters: '{"deploy-project1": true}'
