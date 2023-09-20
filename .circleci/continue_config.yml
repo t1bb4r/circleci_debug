@@ -14,15 +14,23 @@ parameters:
     type: boolean
     default: false
 
+executors:
+  node:
+    docker:
+      - image: cimg/node:16.17.1-browsers
+    working_directory: ~/project
 
 jobs:
   shared-job:
+    executor: node
     steps:
       - run: echo 'shared job success!'
   staging-job:
+    executor: node
     steps:
       - run: echo 'staging job success!'
   production-job:
+    executor: node
     steps:
       - run: echo 'production job success!'
 
