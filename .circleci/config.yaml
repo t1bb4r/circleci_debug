@@ -1,0 +1,35 @@
+version: 2.1
+
+setup: true
+
+orbs:
+  continuation: circleci/continuation@1.0.0
+  path-filtering: circleci/path-filtering@1
+
+workflows:
+  always-run:
+    jobs:
+      - path-filtering/filter:
+          name: check-updated-files
+          # 3-column, whitespace-delimited mapping. One mapping per line:
+          # <regex path-to-test> <parameter-to-set> <value-of-pipeline-parameter>
+          mapping: |
+            project1/.* main-project1 true
+            project2/.* main-project2 true
+          base-revision: main
+          config-path: .circleci/continue_config.yml
+          filters:
+            tags:
+              ignore:
+                - /^project1-v.*/
+                - /^project2-v.*/
+deploy-api:
+  - continuation/continue:
+      configuration_path: .circleci/continue_config.yml
+      parameters: '{"deploy-project1": true}'
+      filters:
+        branches:
+          ignore: /.*/
+        tags:
+          only:
+            - /^project1-v.*/
