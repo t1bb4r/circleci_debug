@@ -54,6 +54,13 @@ workflows:
           name: shared-job-project1
       - production-job:
           name: production-job-project1
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only:
+                - /^project1-v*/
+
   main-project2:
     when: << pipeline.parameters.main-project2 >>
     jobs:
@@ -72,3 +79,9 @@ workflows:
           name: shared-job-project2
       - production-job:
           name: production-job-project2
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only:
+                - /^project1-v*/
