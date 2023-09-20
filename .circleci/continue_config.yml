@@ -89,7 +89,7 @@ workflows:
               ignore: /.*/
             tags:
               only:
-                - /^project1-v.*/
+                - /^project2-v.*/
 
       - production-job:
           name: production-job-project2
@@ -98,4 +98,4 @@ workflows:
               ignore: /.*/
             tags:
               only:
-                - /^project1-v.*/
+                - /^project2-v.*/
