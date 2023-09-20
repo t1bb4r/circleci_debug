@@ -40,27 +40,27 @@ workflows:
     when: << pipeline.parameters.main-project1 >>
     jobs:
       - shared-job:
-        name: shared-job-project1
+          name: shared-job-project1
       - staging-job:
-        name: production-job-project1
+          name: production-job-project1
   deploy-project1:
     when: << pipeline.parameters.main-project1 >>
     jobs:
       - shared-job:
-        name: shared-job-project1
+          name: shared-job-project1
       - production-job:
-        name: production-job-project1
+          name: production-job-project1
   main-project2:
     when: << pipeline.parameters.deploy-project2 >>
     jobs:
       - shared-job:
-        name: shared-job-project2
+          name: shared-job-project2
       - staging-job:
-        name: production-job-project2
+          name: production-job-project2
   deploy-project2:
     when: << pipeline.parameters.deploy-project2 >>
     jobs:
       - shared-job:
-        name: shared-job-project2
+          name: shared-job-project2
       - production-job:
-        name: production-job-project2
+          name: production-job-project2
