@@ -43,6 +43,10 @@ workflows:
           name: shared-job-project1
       - staging-job:
           name: staging-job-project1
+          filters:
+            branches:
+              only:
+                - main
   deploy-project1:
     when: << pipeline.parameters.deploy-project1 >>
     jobs:
@@ -57,6 +61,10 @@ workflows:
           name: shared-job-project2
       - staging-job:
           name: staging-job-project2
+          filters:
+            branches:
+              only:
+                - main
   deploy-project2:
     when: << pipeline.parameters.deploy-project2 >>
     jobs:
