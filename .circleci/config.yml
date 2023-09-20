@@ -21,9 +21,9 @@ workflows:
           filters:
             tags:
               ignore:
-                - /^project1-v.*/
-                - /^project2-v.*/
-deploy-api:
+                - /^project1-v*/
+                - /^project2-v*/
+deploy-project1:
   - continuation/continue:
       configuration_path: .circleci/continue_config.yml
       parameters: '{"deploy-project1": true}'
@@ -32,4 +32,4 @@ deploy-api:
           ignore: /.*/
         tags:
           only:
-            - /^project1-v.*/
+            - /^project1-v*/
